@@ -41,14 +41,4 @@ public class User {
     @Column(name = "status")
     private Status status;
 
-//    public User(String fullName, String city, String country, int phone, String email, String password, Role role, Status status) {
-//        this.fullName = fullName;
-//        this.city = city;
-//        this.country = country;
-//        this.phone = phone;
-//        this.email = email;
-//        this.password = password;
-//        this.role = role;
-//        this.status = status;
-//    }
 }
