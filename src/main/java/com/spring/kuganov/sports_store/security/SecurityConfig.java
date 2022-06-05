@@ -33,19 +33,36 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
-                .anyRequest()
-                .authenticated()
+                .antMatchers("/resources/**").permitAll()
+//                .anyRequest()
+//                .authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/user/login").permitAll()
-                .defaultSuccessUrl("/user/success")
+                .loginPage("/auth/login").permitAll()
+                .defaultSuccessUrl("/auth/success")
                 .and()
                 .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout", "POST"))
+                .logoutRequestMatcher(new AntPathRequestMatcher("/auth/logout", "POST"))
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .deleteCookies("JSESSIONID")
-                .logoutSuccessUrl("/user/login");
+                .logoutSuccessUrl("/auth/login");
+//
+//        http
+//                .csrf().disable()
+//                .authorizeRequests()
+//                .antMatchers("/").authenticated()
+//                .antMatchers("/auth/**").hasAnyRole("ADMIN", "USER")
+//                .and()
+//                .formLogin()
+//                .loginPage("/auth/login").permitAll()
+//                .and()
+//                .logout()
+//                .logoutRequestMatcher(new AntPathRequestMatcher("/auth/logout", "POST"))
+//                .invalidateHttpSession(true)
+//                .clearAuthentication(true)
+//                .deleteCookies("JSESSIONID")
+//                .logoutSuccessUrl("/auth/login");
     }
 
     @Override

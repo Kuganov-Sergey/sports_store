@@ -2,6 +2,7 @@ package com.spring.kuganov.sports_store.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 
@@ -41,4 +42,8 @@ public class User {
     @Column(name = "status")
     private Status status;
 
+    public void setPassword(String password) {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(12);
+        this.password = bCryptPasswordEncoder.encode(password);
+    }
 }
